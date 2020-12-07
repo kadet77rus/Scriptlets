@@ -24,7 +24,7 @@ jobs:
 
   notify:
     needs:
-      - yarn
+      - build
 
     if:
       ${{ always() &&
