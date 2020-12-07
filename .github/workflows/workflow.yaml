@@ -13,12 +13,18 @@ jobs:
         with:
           node-version: 14.x
 
-      - name: build
-        run: bash -e ./build.sh
+      - name: yarn
+        run: |
+          yarn install
+          yarn test
+          yarn browserstack
+          yarn corelibs
+          yarn build
+          yarn wiki:check-updates
 
   notify:
     needs:
-      - build
+      - yarn
 
     if:
       ${{ always() &&
